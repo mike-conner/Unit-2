@@ -39,7 +39,7 @@ def clean_data(PLAYERS, TEAMS):
     return players, teams
 
 
-def sort_players(players, teams):
+def balance_teams(players, teams):
     number_of_teams = len(teams)
     number_of_players = len(players)
 
@@ -179,7 +179,7 @@ def begin_application():
     players, teams = clean_data(constants.PLAYERS, constants.TEAMS)
 
     # sort the data and assign teams to each player
-    assigned_players = sort_players(players, teams)
+    assigned_players = balance_teams(players, teams)
 
     show_welcome_message()
 
