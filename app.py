@@ -63,19 +63,28 @@ def balance_teams(players, teams):
     return players
 
 
+# experience_sort assigns a team to each player
 def experience_sort(player_counter, number_of_players, players, teams,
                     team_counter, number_of_teams, is_experienced):
     while player_counter < number_of_players:
         for player in players:
             for key, value in player.items():
+                # conditional test to see if the play has experience or not
                 if key == 'experience' and value == is_experienced:
+                    # assign next team to player's team key
                     players[player_counter]['team'] = teams[team_counter]
+                    # after assigning team, go to next team in list
                     if team_counter < (number_of_teams - 1):
                         team_counter += 1
+                    # or if at last team, go to first team in list
                     else:
                         team_counter = 0
+            # increment counter until all players in list have a team
             player_counter += 1
 
+    # return the player list with a teams now assigned to their key
+    # return the team_counter variable to keep track of last team assigned
+    # so if the function is called again it picks up where it left off
     return players, team_counter
 
 
